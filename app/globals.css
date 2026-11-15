@@ -139,10 +139,10 @@ a {
 }
 
 .hero {
-  min-height: 700px;
+  min-height: 720px;
   display: flex;
   align-items: center;
-  padding: 150px 0 105px;
+  padding: 145px 0 95px;
   overflow: hidden;
   background:
     radial-gradient(ellipse at 79% 48%, rgba(228, 67, 47, 0.21), transparent 31%),
@@ -167,6 +167,49 @@ a {
 .hero-inner {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(350px, 0.88fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-content {
+  min-width: 0;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  border: 1px solid rgba(245, 242, 235, 0.2);
+  background: #282522;
+  box-shadow: 22px 22px 0 rgba(228, 67, 47, 0.18);
+}
+
+.hero-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-visual::after {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgba(16, 16, 15, 0.76));
+  content: "";
+}
+
+.hero-image-caption {
+  position: absolute;
+  z-index: 1;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .eyebrow {
@@ -190,7 +233,7 @@ a {
 .hero h1 {
   max-width: 760px;
   margin: 26px 0 20px;
-  font-size: clamp(54px, 8.5vw, 106px);
+  font-size: clamp(50px, 6vw, 78px);
   font-weight: 900;
   letter-spacing: -0.075em;
   line-height: 0.92;
@@ -321,12 +364,35 @@ a {
 }
 
 .class-card {
-  min-height: 225px;
-  padding: 27px;
+  min-height: 350px;
+  padding: 0 0 27px;
+  overflow: hidden;
   border: 1px solid var(--line);
   background:
     linear-gradient(145deg, rgba(228, 67, 47, 0.11), transparent 50%),
     var(--surface);
+}
+
+.class-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background: #282522;
+}
+
+.class-image img {
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.class-card:hover .class-image img {
+  transform: scale(1.04);
+}
+
+.class-card-content {
+  padding: 0 27px;
 }
 
 .class-icon {
@@ -451,13 +517,24 @@ a {
   }
 
   .hero {
-    min-height: 650px;
+    min-height: auto;
+    padding: 125px 0 75px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .hero-visual {
+    min-height: 360px;
+    box-shadow: 12px 12px 0 rgba(228, 67, 47, 0.18);
   }
 
   .hero::after {
-    top: 32%;
-    right: -25%;
-    width: 75vw;
+    top: 20%;
+    right: -28%;
+    width: 65vw;
   }
 
   .hero h1 {
@@ -476,6 +553,10 @@ a {
 
   .benefit-card {
     min-height: 175px;
+  }
+
+  .class-card {
+    min-height: 0;
   }
 
   .plan-card {
