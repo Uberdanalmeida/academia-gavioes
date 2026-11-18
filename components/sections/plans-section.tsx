@@ -1,6 +1,11 @@
 import { plans } from "@/lib/data/plans";
+import { siteConfig } from "@/lib/site-config";
 
 export function PlansSection() {
+  const whatsappUrl = siteConfig.whatsapp
+    ? `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Olá! Tenho interesse em conhecer os planos da Academia Gaviões.")}`
+    : `mailto:${siteConfig.email}`;
+
   return (
     <section aria-labelledby="plans-title" className="section plans" id="planos">
       <div className="container">
@@ -27,7 +32,9 @@ export function PlansSection() {
               </p>
               <a
                 className={`button${plan.featured ? "" : " button-secondary"}`}
-                href="mailto:contato@academiagavioes.com.br"
+                href={whatsappUrl}
+                target={siteConfig.whatsapp ? "_blank" : undefined}
+                rel={siteConfig.whatsapp ? "noopener noreferrer" : undefined}
               >
                 Tenho interesse <span aria-hidden="true">→</span>
               </a>
